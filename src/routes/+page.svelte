@@ -18,7 +18,7 @@
 		};
 
 		// number of ships
-		let numShips = 12
+		let numShips = 50
 		generateShips(numShips);
 		animateShip();
 	});
@@ -40,14 +40,14 @@
 				color: color,
 				// speed:  Math.random() / 50,
 				speed: 0.01,
-				angle: i * xpos 
+				angle: 2 * Math.PI * i / numShips
 				// angle: i * xpos + ypos
 			};
 			ships.push(ship);
 			ship.color
 		}
 	}
-  
+
 	// Draw the star
 	function drawStar(star) {
 		ctx.beginPath();
