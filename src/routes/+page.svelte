@@ -93,9 +93,17 @@
 			// Calculate the new x and y coordinates - using tangent gives a very interesting result
 			// console.log(`🚀 ~ file: +page.svelte:75 ~ animateShip ~ ship.angle:`, ship.angle)
 
-			// calculate new x and y coordinates to give ships a circular orbit
-			ship.x = star.x + Math.cos(ship.angle ) * 50;
-			ship.y = star.y + Math.sin(ship.angle ) * 50;
+			// calculate new x and y coordinates using trigonometry, with location variation
+			rand = Math.random() > 0.5;
+			// ship.x = star.x + Math.cos(ship.angle + ships.length / i) * 50; // very interesting assymetric pattern
+			// ship.x = star.x + Math.cos(ship.angle + ships.length * i) * 50; // ditto, unexpected
+			// ship.x = star.x + Math.cos(ship.angle * ships.length / i) * 50; // super interesting whirlwind!
+			// ship.x = star.x + Math.cos(ship.angle / i * ships.length) * 50; // similar/same as above
+			// ship.x = star.x + Math.cos(ship.angle / ships.length * i) * 50; // slow, orderly vortex
+			// ship.x = star.x + Math.cos(ship.angle / i * ships.length) * 50;
+			ship.x = star.x + Math.cos(ship.angle + i ) * 50;
+			ship.y = star.y + Math.sin(ship.angle / i * ships.length) * 5;
+			// ship.y = star.y + Math.sin(ship.angle ) * 50;
 
 
 
