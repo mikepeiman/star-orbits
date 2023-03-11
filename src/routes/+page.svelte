@@ -6,7 +6,7 @@
 		ships = [];
 	let fps = 120;
 	let numShips = 150;
-	let speed = .001
+	let speed = .00001
 	onMount(() => {
 		const canvas = document.getElementById('canvas');
 		ctx = canvas.getContext('2d');
@@ -145,6 +145,7 @@
 		for (let i = 0; i < ships.length; i++) {
 			ship = ships[i];
 			rand = Math.random() > 0.5;
+			// let theta += (i / 10000) * speed / 15000
 			// Update the ship's angle
 			// ship.angle = ship.angle + (rand ? (-ship.speed * i) / 15 : (ship.speed * i) / 15);
 			ship.angle = ship.speed + ship.angle  * i / 25;
@@ -157,11 +158,12 @@
 			// ship.x = star.x + Math.cos(ship.angle + ships.length / i) * 50; // very interesting assymetric pattern
 			// ship.x = star.x + Math.cos(ship.angle + ships.length * i) * 50; // ditto, unexpected
 			// ship.x = star.x + Math.cos((ship.angle * ships.length) / i) * 50; // super interesting whirlwind!
-			ship.x = star.x + Math.tan(ship.angle / i * ships.length) * 50; // similar/same as above
+			// ship.x = star.x + Math.tan(ship.angle / i * ships.length) * 50; // similar/same as above
 			// ship.x = star.x + Math.cos(ship.angle / ships.length * i) * 50; // slow, orderly vortex
 			// ship.x = star.x + Math.cos(ship.angle / i * ships.length) * 50;
 
-			// ship.x = star.x + Math.cos(ship.angle + i ) * 50;
+			ship.x = star.x + Math.cos(ship.angle + i ) * 50;
+			ship.x = star.x + Math.cos(ship.angle + i ) * 50;
 			ship.y = star.y + Math.tan((ship.angle / i) * ships.length / i) * 25;
 
 			// ship.y = star.y + Math.sin(ship.angle ) * 50;
@@ -172,7 +174,7 @@
 			// ship.color += 0.1;
 			drawStar(star);
 			redrawShip1(i);
-			redrawShip2(i);
+			// redrawShip2(i);
 			// drawShip(ship);
 		}
 		// loopShips2()
