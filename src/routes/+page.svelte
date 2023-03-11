@@ -5,6 +5,10 @@
 		ship,
 		ships = [];
 
+		let modifiers = {
+			orbitModX: 50,
+			orbitModY: 50,
+		}
 	onMount(() => {
 		const canvas = document.getElementById('canvas');
 		ctx = canvas.getContext('2d');
@@ -18,7 +22,7 @@
 		};
 
 		// number of ships
-		let numShips = 50
+		let numShips = 45
 		generateShips(numShips);
 		animateShip();
 	});
@@ -94,8 +98,8 @@
 			// console.log(`🚀 ~ file: +page.svelte:75 ~ animateShip ~ ship.angle:`, ship.angle)
 
 			// calculate new x and y coordinates to give ships a circular orbit
-			ship.x = star.x + Math.cos(ship.angle ) * 50;
-			ship.y = star.y + Math.sin(ship.angle ) * 50;
+			ship.x = star.x + Math.cos(ship.angle ) * modifiers.orbitModX;
+			ship.y = star.y + Math.sin(ship.angle ) * modifiers.orbitModY;;
 
 
 
@@ -115,8 +119,8 @@
 <canvas id="canvas" />
 
 <style>
-    canvas {
-        width: 100%;
-        height: 100%;
-    }
+	canvas {
+		width: 100%;
+		height: 100%;
+	}
 </style>
