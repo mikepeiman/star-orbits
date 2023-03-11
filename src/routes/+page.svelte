@@ -32,8 +32,6 @@
 		for (let i = 0; i < numShips; i++) {
 			let xpos, ypos, rand
 			rand = Math.random() > 0.5;
-			// xpos = canvas.width / 2 * (rand ? 1.5 : -1.5);
-			// ypos = canvas.width / 2 * (rand ? 1.5  : -1.5);
 			xpos = canvas.width / 2 
 			ypos = canvas.width / 2 
 			let color = 360 - (80 / numShips * i);
@@ -42,13 +40,10 @@
 				y: ypos,
 				radius: canvas.width / 300,
 				color: color,
-				// speed:  Math.random() / 50,
 				speed: 0.01,
 				angle: 2 * Math.PI * i / numShips
-				// angle: i * xpos + ypos
 			};
 			ships.push(ship);
-			ship.color
 		}
 	}
 
@@ -76,38 +71,13 @@
 	let counter = 0
 	function animateShip() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
-	
-		// counter++
-		let rand = Math.random()
-		let posVar =  1
-		// if(counter > 60){
-		// 	counter = 0
-		// 	rand = Math.random()
-		// 	console.log(`🚀 ~ file: +page.svelte:75 ~ animateShip ~ rand:`, rand)
-		// 	posVar = rand
-		// }
-
-		// let posVar =  rand > 0.5 ? rand * 2 : rand * -2
 		for (let i = 0; i < ships.length; i++) {
 			ship = ships[i];
-			// Update the ship's angle
-			// ship.angle += ship.speed * i/15;
 			ship.angle += ship.speed;
-
 			// Calculate the new x and y coordinates - using tangent gives a very interesting result
-			// console.log(`🚀 ~ file: +page.svelte:75 ~ animateShip ~ ship.angle:`, ship.angle)
-
 			// calculate new x and y coordinates to give ships a circular orbit
-			ship.x = star.x + Math.cos(ship.angle ) * modifiers.orbitModX;
-			ship.y = star.y + Math.sin(ship.angle ) * modifiers.orbitModY;;
-
-
-
-
-			// ship.x = star.x + i *.1 + Math.cos(ship.angle) * 50;
-			// ship.y = star.y + i * .1 + Math.sin(ship.angle) * 50;
-			// ship.x = star.x + posVar + Math.cos(ship.angle) * 50;
-			// ship.y = star.y + posVar + Math.sin(ship.angle) * 50;
+			ship.x = star.x + Math.cos(ship.angle) * modifiers.orbitModX;
+			ship.y = star.y + Math.sin(ship.angle) * modifiers.orbitModY;
 			ship.color += .1
 			drawStar(star);
 			drawShip(ship);
